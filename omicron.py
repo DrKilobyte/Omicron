@@ -39,6 +39,9 @@ if len(sys.argv) > 1:
             memory[pointer] *= mem(program[i+1])
             i += 1
         elif instruction == '/':
+            memory[pointer] /= mem(program[i+1])
+            i += 1
+        elif instruction == '//':
             memory[pointer] //= mem(program[i+1])
             i += 1
         elif instruction == '^':
