@@ -70,4 +70,3 @@ if len(sys.argv) > 1:
         i += 1
 else:
     print("Missing input file")
-input()
