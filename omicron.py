@@ -1,70 +1,73 @@
 import sys
-program = [c.strip() for c in open(sys.argv[1], 'r').read().split()]
-memory = {}
-def mem(c):
-    global memory
-    for cell in memory: c = c.replace("@"+str(cell), str(memory[cell]))
-    return int(c)
-pointer = 0
-i = 0
-while True:
-    command = program[i]
-    # Set memory
-    if command == 'zero': memory[pointer] = 0
-    elif command == 'set':
-        memory[pointer] = mem(program[i+1])
-        i += 1
-    # Pointer
-    elif command == '>': pointer += 1
-    elif command == '<': pointer -= 1
-    elif command == '>>':
-        pointer += mem(program[i+1])
-        i += 1
-    elif command == '<<':
-        pointer -= mem(program[i+1])
-        i += 1
-    elif command == ':':
-        pointer == mem(program[i+1])
-        i += 1
-    # Arithmetic
-    elif command == '++': memory[pointer] += 1
-    elif command == '--': memory[pointer] -= 1
-    elif command == '+':
-        memory[pointer] += mem(program[i+1])
-        i += 1
-    elif command == '-':
-        memory[pointer] -= mem(program[i+1])
-        i += 1
-    elif command == '*':
-        memory[pointer] *= mem(program[i+1])
-        i += 1
-    elif command == '/':
-        memory[pointer] //= mem(program[i+1])
-        i += 1
-    elif command == '^':
-        memory[pointer] **= mem(program[i+1])
-        i += 1
-    elif command == '%':
-        memory[pointer] %= mem(program[i+1])
-        i += 1
-    elif command == '\\':
-        memory[pointer] = memory[pointer]**(1/mem(program[i+1]))
-        i += 1
-    # Flow
-    elif command == 'goto':
-        i = mem(program[i+1])-1
-    elif command == 'qoto':
-        i = mem(program[i+1])-1 if memory[pointer] == 0 else mem(program[i+2])-1
-    elif command == 'wait': input()
-    # I/O
-    elif command == 'input':
-        stdin = input()
-        memory[pointer] = int(stdin) if len(stdin) > 0 else 0
-    elif command == 'ascii':
-        stdin = input()
-        memory[pointer] = ord(stdin[0]) if len(stdin) > 0 else 0
-    elif command == 'print': print(memory[pointer])
-    elif command == 'char': print(chr(memory[pointer]))
+if len(sys.argv) > 1:
+    program = [c.strip() for c in open(sys.argv[1], 'r').read().split()]
+    memory = {}
+    number = lambda n: int(float(n)) if int(float(n)) == float(n) else float(n)
+    def mem(instruction):
+        for cell in memory: instruction = instruction.replace("@"+str(cell), str(memory[cell]))
+        return number(instruction)
+    pointer = 0
+    i = 0
+    while True:
+        instruction = program[i]
+        # Set memory
+        if instruction == 'set':
+            memory[pointer] = mem(program[i+1])
+            i += 1
+        # Pointer
+        elif instruction == '>': pointer += 1
+        elif instruction == '<': pointer -= 1
+        elif instruction == '>>':
+            pointer += mem(program[i+1])
+            i += 1
+        elif instruction == '<<':
+            pointer -= mem(program[i+1])
+            i += 1
+        elif instruction == ':':
+            pointer == mem(program[i+1])
+            i += 1
+        # Arithmetic
+        elif instruction == '++': memory[pointer] += 1
+        elif instruction == '--': memory[pointer] -= 1
+        elif instruction == '+':
+            memory[pointer] += mem(program[i+1])
+            i += 1
+        elif instruction == '-':
+            memory[pointer] -= mem(program[i+1])
+            i += 1
+        elif instruction == '*':
+            memory[pointer] *= mem(program[i+1])
+            i += 1
+        elif instruction == '/':
+            memory[pointer] //= mem(program[i+1])
+            i += 1
+        elif instruction == '^':
+            memory[pointer] **= mem(program[i+1])
+            i += 1
+        elif instruction == '%':
+            memory[pointer] %= mem(program[i+1])
+            i += 1
+        elif instruction == '\\':
+            memory[pointer] = memory[pointer]**(1/mem(program[i+1]))
+            i += 1
+        # Flow
+        elif instruction == 'goto':
+            i = mem(program[i+1])-1
+        elif instruction == 'qoto':
+            i = mem(program[i+1])-1 if not memory[pointer] == 0 else mem(program[i+2])-1
+        elif instruction == 'wait': input()
+        # I/O
+        elif instruction == 'input':
+            stdin = input()
+            memory[pointer] = mem(stdin) if len(stdin) > 0 else 0
+        elif instruction == 'ascii':
+            stdin = input()
+            memory[pointer] = ord(stdin[0]) if len(stdin) > 0 else 0
+        elif instruction == 'print': print(memory[pointer], end="", flush=True)
+        elif instruction == 'char': print(chr(memory[pointer]), end="", flush=True)
 
-    elif command == 'stop': break
-    i += 1
+        elif instruction == 'stop': break
+        i += 1
+else:
+    print("Missing input file")
+input()
