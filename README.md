@@ -1,4 +1,4 @@
 # Omicron
 Omicron programming language
 
-(Details coming soon!)
+Details coming soon! See if you can figure it out ;).
