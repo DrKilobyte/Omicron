@@ -10,6 +10,9 @@ if len(sys.argv) > 1:
         return number(instruction)
     pointer = 0
     i = 0
+    markers = {}
+    for m in range(0, len(program)):
+        if program[m].startswith(":"): markers[int(program[m][1:])] = m
     while True:
         instruction = program[i]
         # Pointer
@@ -51,9 +54,9 @@ if len(sys.argv) > 1:
             i += 1
         # Flow
         elif instruction == 'goto':
-            i = mem(program[i+1])-1
+            i = markers[mem(program[i+1])]-1
         elif instruction == 'qoto':
-            i = mem(program[i+1])-1 if not memory[pointer] == 0 else mem(program[i+2])-1
+            i = markers[mem(program[i+1])]-1 if not memory[pointer] == 0 else markers[mem(program[i+2])]-1
         elif instruction == 'wait': input()
         # I/O
         elif instruction == 'input':
