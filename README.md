@@ -1,7 +1,7 @@
 # Omicron
 Omicron is a Turing-complete esoteric programming language made by Dr. Kilobyte in 2023.
 ## Instructions
-Memory cells and program instructions are zero-based.
+Memory cells are zero-based.
 
 <table>
 	<tr>
