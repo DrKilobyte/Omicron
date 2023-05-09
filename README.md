@@ -38,7 +38,7 @@ Memory cells are zero-based.
 	</tr>
 	<tr>
 		<td>&amp;n</td>
-		<td>Sets memory pointer to n</td>
+		<td>Moves memory pointer to n</td>
 	</tr>
 	<tr>
 		<td>++</td>
