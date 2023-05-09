@@ -10,75 +10,75 @@ Memory cells are zero-based.
 	</tr>
 	<tr>
 		<td>(any number)</td>
-		<td>Sets current memory cell</td>
+		<td>Set current memory cell</td>
 	</tr>
 	<tr>
 		<td>:n</td>
-		<td>Marks position in program as n</td>
+		<td>Mark position in program as n</td>
 	</tr>
 	<tr>
 		<td>@n</td>
-		<td>Gets value at memory cell n (can be used to set memory cell)</td>
+		<td>Get value at memory cell n</td>
 	</tr>
 	<tr>
 		<td>&gt;</td>
-		<td>Increments memory pointer</td>
+		<td>Increment memory pointer</td>
 	</tr>
 	<tr>
 		<td>&lt;</td>
-		<td>Decrements memory pointer</td>
+		<td>Decrement memory pointer</td>
 	</tr>
 	<tr>
 		<td>&gt;&gt; n</td>
-		<td>Moves memory pointer forward n</td>
+		<td>Move memory pointer forward n</td>
 	</tr>
 	<tr>
 		<td>&lt;&lt; n</td>
-		<td>Moves memory pointer backward n</td>
+		<td>Move memory pointer back n</td>
 	</tr>
 	<tr>
 		<td>&amp;n</td>
-		<td>Moves memory pointer to n</td>
+		<td>Move memory pointer to n</td>
 	</tr>
 	<tr>
 		<td>++</td>
-		<td>Increments current memory cell</td>
+		<td>Increment current memory cell</td>
 	</tr>
 	<tr>
 		<td>--</td>
-		<td>Decrements current memory cell</td>
+		<td>Decrement current memory cell</td>
 	</tr>
 	<tr>
 		<td>+ n</td>
-		<td>Adds n to current memory cell</td>
+		<td>Add n to current memory cell</td>
 	</tr>
 	<tr>
 		<td>- n</td>
-		<td>Subtracts n from current memory cell</td>
+		<td>Subtract n from current memory cell</td>
 	</tr>
 	<tr>
 		<td>* n</td>
-		<td>Multiples current memory cell by n</td>
+		<td>Multiply current memory cell by n</td>
 	</tr>
 	<tr>
 		<td>/ n</td>
-		<td>Divides current memory cell by n</td>
+		<td>Divide current memory cell by n</td>
 	</tr>
 	<tr>
 		<td>// n</td>
-		<td>Floor-divides current memory cell by n</td>
+		<td>Floor-divide current memory cell by n</td>
 	</tr>
 	<tr>
 		<td>^ n</td>
-		<td>Raises current memory cell to the nth power</td>
+		<td>Raise current memory cell to the nth power</td>
 	</tr>
 	<tr>
 		<td>% n</td>
-		<td>Divides current memory cell by n and sets it to the remainder</td>
+		<td>Divide current memory cell by n and set to the remainder</td>
 	</tr>
 	<tr>
 		<td>\ n</td>
-		<td>Sets current memory cell to its nth root</td>
+		<td>Set current memory cell to its nth root</td>
 	</tr>
 	<tr>
 		<td>goto n</td>
@@ -90,27 +90,27 @@ Memory cells are zero-based.
 	</tr>
 	<tr>
 		<td>wait</td>
-		<td>Pauses program until <code>Enter</code> is pressed.</td>
+		<td>Pause program until <code>Enter</code> is pressed.</td>
 	</tr>
 	<tr>
 		<td>input</td>
-		<td>Accepts an integer value (0 if none given) and sets current memory cell</td>
+		<td>Accept an integer value (0 if none given) and sets current memory cell</td>
 	</tr>
 	<tr>
 		<td>ascii</td>
-		<td>Accepts a single character (first if more than one given) and sets current memory cell to ASCII value</td>
+		<td>Accept a single character (first if more than one given) and sets current memory cell to ASCII value</td>
 	</tr>
 	<tr>
 		<td>print</td>
-		<td>Prints current memory cell</td>
+		<td>Print current memory cell</td>
 	</tr>
 	<tr>
 		<td>char</td>
-		<td>Prints ASCII character of current memory cell</td>
+		<td>Print ASCII character of current memory cell</td>
 	</tr>
 	<tr>
 		<td>stop</td>
-		<td>Halts program</td>
+		<td>End program</td>
 	</tr>
 </table>
 
