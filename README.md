@@ -145,7 +145,7 @@ input ^ 2 > input ^ 2 + @0 \ 2 print stop
 </pre>
 ### Fibonacci sequence (with user input)
 <pre>
-input - 2 > 1 print > 1 print > :1 @1 + @2 print << 2 @2 > @3 > &0 -- qoto 2 3 :2 &3 goto 1 :3 wait stop
+input - 2 > 1 print > 1 print > :1 @1 + @2 print << 2 @2 > @3 > ~ 0 -- qoto 2 3 :2 ~ 3 goto 1 :3 wait stop
 </pre>
 Alternative; only final output
 <pre>
