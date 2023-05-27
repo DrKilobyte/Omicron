@@ -3,8 +3,7 @@ if len(sys.argv) > 1:
     program = [c.strip() for c in open(sys.argv[1], 'r').read().split()]
     memory = {}
     def number(n):
-        if ('.' in str(n)) and (float(n) > int(n)): return float(n)
-        return int(n)
+        return float(n) if (('.' in str(n)) and (float(n) > int(n))) else int(n)
     def mem(instruction):
         for cell in memory: instruction = instruction.replace("@"+str(cell), str(memory[cell]))
         return number(instruction)
@@ -24,7 +23,9 @@ if len(sys.argv) > 1:
         elif instruction == '<<':
             pointer -= mem(program[i+1])
             i += 1
-        elif instruction.startswith('&'): pointer = mem(instruction[1])
+        elif instruction == '~':
+            pointer = mem(program[i+1])
+            i += 1
         # Arithmetic
         elif instruction == '++': memory[pointer] += 1
         elif instruction == '--': memory[pointer] -= 1
@@ -61,12 +62,12 @@ if len(sys.argv) > 1:
         # I/O
         elif instruction == 'input':
             stdin = input()
-            memory[pointer] = mem(stdin) if len(stdin) > 0 else 0
-        elif instruction == 'ascii':
+            memory[pointer] = number(stdin) if len(stdin) > 0 else 0
+        elif instruction == 'inputc':
             stdin = input()
             memory[pointer] = ord(stdin[0]) if len(stdin) > 0 else 0
         elif instruction == 'print': print(memory[pointer])
-        elif instruction == 'char': print(chr(memory[pointer]), end="", flush=True)
+        elif instruction == 'printc': print(chr(memory[pointer]), end="", flush=True)
 
         elif instruction == 'stop': break
         else:
