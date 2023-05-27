@@ -37,7 +37,7 @@ Memory cells are zero-based.
 		<td>Move memory pointer back n</td>
 	</tr>
 	<tr>
-		<td>&amp;n</td>
+		<td>~ n</td>
 		<td>Move memory pointer to n</td>
 	</tr>
 	<tr>
@@ -97,7 +97,7 @@ Memory cells are zero-based.
 		<td>Accept an integer value (0 if none given) and sets current memory cell</td>
 	</tr>
 	<tr>
-		<td>ascii</td>
+		<td>inputc</td>
 		<td>Accept a single character (first if more than one given) and sets current memory cell to ASCII value</td>
 	</tr>
 	<tr>
@@ -105,7 +105,7 @@ Memory cells are zero-based.
 		<td>Print current memory cell</td>
 	</tr>
 	<tr>
-		<td>char</td>
+		<td>printc</td>
 		<td>Print ASCII character of current memory cell</td>
 	</tr>
 	<tr>
@@ -117,23 +117,23 @@ Memory cells are zero-based.
 ## Examples
 ### Hello, World!
 <pre>
-72 char
-101 char
-108 char char
-111 char
-44 char
-32 char
-87 char
-111 char
-114 char
-108 char
-100 char
-33 char
+72 printc
+101 printc
+108 printc printc
+111 printc
+44 printc
+32 printc
+87 printc
+111 printc
+114 printc
+108 printc
+100 printc
+33 printc
 stop
 </pre>
 ### Cat
 <pre>
-ascii char stop
+inputc printc stop
 </pre>
 ### Truth machine
 <pre>
@@ -146,4 +146,8 @@ input ^ 2 > input ^ 2 + @0 \ 2 print stop
 ### Fibonacci sequence (with user input)
 <pre>
 input - 2 > 1 print > 1 print > :1 @1 + @2 print << 2 @2 > @3 > &0 -- qoto 2 3 :2 &3 goto 1 :3 wait stop
+</pre>
+Alternative; only final output
+<pre>
+input - 2 > 1 > 1 > :1 @1 + @2 << 2 @2 > @3 > ~ 0 -- qoto 2 3 :2 ~ 3 goto 1 :3 ~ 3 print wait stop
 </pre>
