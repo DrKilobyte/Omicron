@@ -1,7 +1,7 @@
 # Omicron
 Omicron is an interpreted Turing-complete esoteric programming language written in Python.
 ## Instructions
-Memory cells are zero-based.
+Pointer starts at 0. Negative addresses are valid!
 
 <table>
 	<tr>
@@ -21,7 +21,7 @@ Memory cells are zero-based.
 	</tr>
 	<tr>
 		<td>@n</td>
-		<td>Get value at memory cell n</td>
+		<td>Get value at memory cell n (can be used to set memory cells and can be nested, e.g. @@@n)</td>
 	</tr>
 	<tr>
 		<td>&gt;</td>
@@ -227,25 +227,24 @@ Memory cells are zero-based.
 108 printc
 100 printc
 33 printc
-stop
 </pre>
 ### Cat
 <pre>
-inputc printc stop
+inputc printc
 </pre>
 ### Truth machine
 <pre>
-input qoto 1 2 :1 print goto 2 :2 stop
+input qoto 1 2 :1 print goto 1 :2
 </pre>
 ### Pythagorean theorem
 <pre>
-input ^ 2 > input ^ 2 + @0 \ 2 print stop
+input ^ 2 > input ^ 2 + @0 \ 2 print
 </pre>
 ### Fibonacci sequence (with user input)
 <pre>
-input - 2 > 1 print > 1 print > :1 @1 + @2 print << 2 @2 > @3 > ~ 0 -- qoto 2 3 :2 ~ 3 goto 1 :3 wait stop
+input - 2 > 1 print > 1 print > :1 @1 + @2 print << 2 @2 > @3 > ~ 0 -- qoto 2 3 :2 ~ 3 goto 1 :3 wait
 </pre>
 Alternative; only final output
 <pre>
-input - 2 > 1 > 1 > :1 @1 + @2 << 2 @2 > @3 > ~ 0 -- qoto 2 3 :2 ~ 3 goto 1 :3 ~ 3 print wait stop
+input - 2 > 1 > 1 > :1 @1 + @2 << 2 @2 > @3 > ~ 0 -- qoto 2 3 :2 ~ 3 goto 1 :3 ~ 3 print wait
 </pre>
