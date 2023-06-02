@@ -17,6 +17,9 @@ Memory cells are zero-based.
 		<td>Mark position in program as n</td>
 	</tr>
 	<tr>
+		<td colspan="2">Pointer</td>
+	</tr>
+	<tr>
 		<td>@n</td>
 		<td>Get value at memory cell n</td>
 	</tr>
@@ -39,6 +42,9 @@ Memory cells are zero-based.
 	<tr>
 		<td>~ n</td>
 		<td>Move memory pointer to n</td>
+	</tr>
+	<tr>
+		<td colspan="2">Arithmetic</td>
 	</tr>
 	<tr>
 		<td>++</td>
@@ -117,9 +123,11 @@ Memory cells are zero-based.
 		<td>Negate current memory cell</td>
 	</tr>
 	<tr>
-		<td>pi></td>
+		<td>pi</td>
 		<td>Set current memory cell to pi</td>
 	</tr>
+	<tr>
+		<td colspan="2">Comparison</td>
 	<tr>
 		<td>eq n</td>
 		<td>Sets current memory cell to 1 if it equals n, else 0
@@ -151,6 +159,13 @@ Memory cells are zero-based.
 	<tr>
 		<td>wait</td>
 		<td>Pause program until <code>Enter</code> is pressed.</td>
+	</tr>
+	<tr>
+		<td>stop</td>
+		<td>End program</td>
+	</tr>
+	<tr>
+		<td colspan="2">Flow</td>
 	</tr>
 	<tr>
 		<td>input</td>
@@ -191,10 +206,6 @@ Memory cells are zero-based.
 	<tr>
 		<td>awriteb f</td>
 		<td>Append current memory cell to file f (binary)</td>
-	</tr>
-	<tr>
-		<td>stop</td>
-		<td>End program</td>
 	</tr>
 </table>
 
