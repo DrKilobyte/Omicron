@@ -196,10 +196,10 @@ Memory cells are zero-based.
 	</tr>
 	<tr>
 		<td>write f</td>
-		<td>Write ASCII char of current memory cell to file f (truncates files)</td>
+		<td>Write ASCII char of current memory cell to file f (truncates file)</td>
 	</tr>
 	<tr>
-		<td>awrite f<td>
+		<td>awrite f</td>
 		<td>Append ASCII char of current memory cell to file f</td>
 	</tr>
 	<tr>
