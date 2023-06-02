@@ -122,6 +122,24 @@ Memory cells are zero-based.
 	</tr>
 	<tr>
 		<td>eq n</td>
+		<td>Sets current memory cell to 1 if it equals n, else 0
+	</tr>
+	<tr>
+		<td>gt n</td>
+		<td>Sets current memory cell to 1 if it is greater than n, else 0
+	</tr>
+	<tr>
+		<td>gte n</td>
+		<td>Sets current memory cell to 1 of it is greater then or equal to n, else 0
+	</tr>
+	<tr>
+		<td>lt n</td>
+		<td>Sets current memory cell to 1 if it is less than n, else 0
+	</tr>
+	<tr>
+		<td>lte n</td>
+		<td>Sets current memory cell to 1 of it is lesser then or equal to n, else 0
+	</tr>
 	<tr>
 		<td>goto n</td>
 		<td>Goto marker n</td>
@@ -143,12 +161,36 @@ Memory cells are zero-based.
 		<td>Accept a single character (first if more than one given) and sets current memory cell to ASCII value</td>
 	</tr>
 	<tr>
+		<td>read f n</td>
+		<td>Read nth byte (zero-based) from file f and set current memory cell</td>
+	</tr>
+	<tr>
+		<td>size f</td>
+		<td>Set current memory cell to size of file f (bytes)</td>
+	</tr>
+	<tr>
 		<td>print</td>
 		<td>Print current memory cell</td>
 	</tr>
 	<tr>
 		<td>printc</td>
 		<td>Print ASCII character of current memory cell</td>
+	</tr>
+	<tr>
+		<td>write f</td>
+		<td>Write ASCII char of current memory cell to file f (truncates files)</td>
+	</tr>
+	<tr>
+		<td>awrite f<td>
+		<td>Append ASCII char of current memory cell to file f</td>
+	</tr>
+	<tr>
+		<td>writeb f</td>
+		<td>Write current memory cell to file f (binary) (truncates file)</td>
+	</tr>
+	<tr>
+		<td>awriteb f</td>
+		<td>Append current memory cell to file f (binary)</td>
 	</tr>
 	<tr>
 		<td>stop</td>
