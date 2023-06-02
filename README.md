@@ -81,6 +81,48 @@ Memory cells are zero-based.
 		<td>Set current memory cell to its nth root</td>
 	</tr>
 	<tr>
+		<td>round</td>
+		<td>Round current memory cell</td>
+	</tr>
+	<tr>
+		<td>ceil</td>
+		<td>Round up current memory cell</td>
+	</tr>
+	<tr>
+		<td>floor</td>
+		<td>Round down current memory cell</td>
+	</tr>
+	<tr>
+		<td>sin</td>
+		<td>Set current memory cell to its sine</td>
+	</tr>
+	<tr>
+		<td>cos</td>
+		<td>Set current memory cell to its cosine</td>
+	</tr>
+	<tr>
+		<td>tan</td>
+		<td>et current memory cell to its tangent</td>
+	</tr>
+	<tr>
+		<td>log n</td>
+		<td>Set current memory cell to its base-n logarithm</td>
+	</tr>
+	<tr>
+		<td>abs</td>
+		<td>Set current memory cell to its absolute value</td>
+	</tr>
+	<tr>
+		<td>not</td>
+		<td>Negate current memory cell</td>
+	</tr>
+	<tr>
+		<td>pi></td>
+		<td>Set current memory cell to pi</td>
+	</tr>
+	<tr>
+		<td>eq n</td>
+	<tr>
 		<td>goto n</td>
 		<td>Goto marker n</td>
 	</tr>
