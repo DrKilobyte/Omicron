@@ -71,8 +71,6 @@ if len(sys.argv) > 1:
                 memory[pointer] = math.ceil(memory[pointer])
             elif instruction == 'floor':
                 memory[pointer] = math.floor(memory[pointer])
-            elif instruction == 'ceil':
-                memory[pointer] = math.ceil(memory[pointer])
             elif instruction == 'sin':
                 memory[pointer] = math.sin(memory[pointer])
             elif instruction == 'cos':
