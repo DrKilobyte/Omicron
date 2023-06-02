@@ -149,6 +149,9 @@ Memory cells are zero-based.
 		<td>Sets current memory cell to 1 of it is lesser then or equal to n, else 0
 	</tr>
 	<tr>
+		<td colspan="2">Flow</td>
+	</tr>
+	<tr>
 		<td>goto n</td>
 		<td>Goto marker n</td>
 	</tr>
@@ -165,7 +168,7 @@ Memory cells are zero-based.
 		<td>End program</td>
 	</tr>
 	<tr>
-		<td colspan="2">Flow</td>
+		<td colspan="2">I/O</td>
 	</tr>
 	<tr>
 		<td>input</td>
