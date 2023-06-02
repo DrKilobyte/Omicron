@@ -1,6 +1,10 @@
 import sys, math
 if len(sys.argv) > 1:
-    program = [c.strip() for c in open(sys.argv[1], 'r').read().split()]
+    try:
+        program = [c.strip() for c in open(sys.argv[1], 'r').read().split()]
+    except FileNotFoundError:
+        print("File not found: %s"%sys.argv[1])
+        sys.exit()
     memory = {}
     def error(m):
         global ok
@@ -9,7 +13,8 @@ if len(sys.argv) > 1:
     def number(n):
         return float(n) if ('.' in str(n)) else int(n)
     def mem(instruction):
-        for cell in memory: instruction = instruction.replace("@"+str(cell), str(memory[cell]))
+        while '@' in instruction:
+            for cell in memory: instruction = instruction.replace("@"+str(cell), str(memory[cell]))
         return number(instruction)
     ok = 1
     pointer = 0
@@ -17,12 +22,9 @@ if len(sys.argv) > 1:
     markers = {}
     for m in range(0, len(program)):
         if program[m].startswith(":"): markers[int(program[m][1:])] = m
-    while True:
+    while i < len(program):
         try:
-            try: instruction = program[i]
-            except IndexError:
-                error("Missing stop")
-                break
+            instruction = program[i]
             # Pointer
             if instruction == '>': pointer += 1
             elif instruction == '<': pointer -= 1
@@ -152,4 +154,3 @@ if len(sys.argv) > 1:
     if not ok: input()
 else:
     print("Missing input file")
-    input()
