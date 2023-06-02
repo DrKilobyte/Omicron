@@ -80,7 +80,8 @@ if len(sys.argv) > 1:
             elif instruction == 'tan':
                 memory[pointer] = math.tan(memory[pointer])
             elif instruction == 'log':
-                memory[pointer] = math.log(memory[pointer], mem(program[i+1]))
+                if mem(program[i+1]) > 1: memory[pointer] = math.log(memory[pointer], mem(program[i+1]))
+                else: error("Log base must be 2 or greater")
                 i += 1
             elif instruction == 'abs': memory[pointer] = abs(memory[pointer])
             elif instruction == 'not': memory[pointer] = int(not memory[pointer])
@@ -118,8 +119,10 @@ if len(sys.argv) > 1:
                 stdin = input()
                 memory[pointer] = ord(stdin[0]) if len(stdin) > 0 else 0
             elif instruction == 'read':
-                with open(program[i+1], 'rb') as f:
-                    memory[pointer] = f.read()[mem(program[i+2])]
+                try:
+                    with open(program[i+1], 'rb') as f: memory[pointer] = f.read()[mem(program[i+2])]
+                except FileNotFoundError:
+                    error("File not found: %s"%program[i+1])
                 i += 2
             elif instruction == 'size':
                 with open(program[i+1], 'rb') as f: memory[pointer] = len(f.read())
