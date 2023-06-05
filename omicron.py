@@ -21,7 +21,10 @@ if len(sys.argv) > 1:
     i = 0
     markers = {}
     for m in range(0, len(program)):
-        if program[m].startswith(":"): markers[int(program[m][1:])] = m
+        try:
+            if program[m].startswith(":"): markers[int(program[m][1:])] = m
+        except ValueError:
+            error("Marker must be a number: :%s"%program[m][1:])
     while i < len(program):
         try:
             instruction = program[i]
@@ -123,6 +126,8 @@ if len(sys.argv) > 1:
                     with open(program[i+1], 'rb') as f: memory[pointer] = f.read()[mem(program[i+2])]
                 except FileNotFoundError:
                     error("File not found: %s"%program[i+1])
+                except IndexError:
+                    error("Specified byte is beyond the end of the file: %s"%mem(program[i+2]))
                 i += 2
             elif instruction == 'size':
                 with open(program[i+1], 'rb') as f: memory[pointer] = len(f.read())
