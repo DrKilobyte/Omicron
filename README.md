@@ -1,5 +1,10 @@
 # Omicron
+<i><q>Easy to learn and keeps you on your toes!</q></i>
+
 Omicron is an interpreted Turing-complete esoteric programming language written in Python.
+
+Omicron was compiled using pyinstaller for Python 3. A Python 2 version is possible in the future.
+
 ## Instructions
 Pointer starts at 0. Negative addresses are valid!
 
