@@ -247,9 +247,9 @@ input ^ 2 > input ^ 2 + @0 \ 2 print
 </pre>
 ### Fibonacci sequence (with user input)
 <pre>
-input - 2 > 1 print > 1 print > :1 @1 + @2 print << 2 @2 > @3 > ~ 0 -- qoto 2 3 :2 ~ 3 goto 1 :3 wait
+input - 2 > 1 print > 1 print > :1 @1 + @2 print << 2 @2 > @3 ~ 0 -- qoto 2 3 :2 ~ 3 goto 1 :3 wait
 </pre>
 Alternative; only final output
 <pre>
-input - 2 > 1 > 1 > :1 @1 + @2 << 2 @2 > @3 > ~ 0 -- qoto 2 3 :2 ~ 3 goto 1 :3 ~ 3 print wait
+input - 2 > 1 > 1 > :1 @1 + @2 << 2 @2 > @3 ~ 0 -- qoto 2 3 :2 ~ 3 goto 1 :3 ~ 3 print wait
 </pre>
