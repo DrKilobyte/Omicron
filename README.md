@@ -94,6 +94,10 @@ Pointer starts at 0. Negative addresses are valid!
 		<td>Set current memory cell to its nth root</td>
 	</tr>
 	<tr>
+		<td>log n</td>
+		<td>Set current memory cell to its base-n logarithm</td>
+	</tr>
+	<tr>
 		<td>round</td>
 		<td>Round current memory cell</td>
 	</tr>
@@ -118,20 +122,12 @@ Pointer starts at 0. Negative addresses are valid!
 		<td>et current memory cell to its tangent</td>
 	</tr>
 	<tr>
-		<td>log n</td>
-		<td>Set current memory cell to its base-n logarithm</td>
-	</tr>
-	<tr>
-		<td>fact n</td>
-		<td>Set current memory cell to n factorial</td>
-	</tr>
-	<tr>
 		<td>abs</td>
 		<td>Set current memory cell to its absolute value</td>
 	</tr>
 	<tr>
-		<td>not</td>
-		<td>Negate current memory cell</td>
+		<td>fact n</td>
+		<td>Set current memory cell to n factorial</td>
 	</tr>
 	<tr>
 		<td>rand n1 n2</td>
@@ -166,6 +162,10 @@ Pointer starts at 0. Negative addresses are valid!
 	<tr>
 		<td>lte n</td>
 		<td>Sets current memory cell to 1 of it is lesser then or equal to n, else 0
+	</tr>
+	<tr>
+		<td>not</td>
+		<td>Set current memory cell to 1 if it is 0, else 0</td>
 	</tr>
 	<tr>
 		<th colspan="2">Flow</th>
