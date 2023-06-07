@@ -1,4 +1,4 @@
-import sys, math
+import sys, math, random
 if len(sys.argv) > 1:
     try:
         program = [c.strip() for c in open(sys.argv[1], 'r').read().split()]
@@ -20,11 +20,19 @@ if len(sys.argv) > 1:
     pointer = 0
     i = 0
     markers = {}
+    # Imports
+    for m in range(0, len(program)):
+        try:
+            if program[m].startswith("!"):
+                with open(program[m][1:]) as f:
+                    program[m:m] = f.read().split()
+                    program.pop(m+len(f.read().split())-1)
+        except FileNotFoundError: error("File not found: %s"%program[m][1:])
+    # Markers
     for m in range(0, len(program)):
         try:
             if program[m].startswith(":"): markers[int(program[m][1:])] = m
-        except ValueError:
-            error("Marker must be a number: :%s"%program[m][1:])
+        except ValueError: error("Marker must be a number: :%s"%program[m][1:])
     while i < len(program):
         try:
             instruction = program[i]
@@ -86,9 +94,21 @@ if len(sys.argv) > 1:
                 if mem(program[i+1]) > 1: memory[pointer] = math.log(memory[pointer], mem(program[i+1]))
                 else: error("Log base must be 2 or greater")
                 i += 1
+            elif instruction == 'fact':
+                try: memory[pointer] = math.factorial(mem(program[i+1]))
+                except: error("Cannot convert %s to number"%program[i+1])
+                i += 1
             elif instruction == 'abs': memory[pointer] = abs(memory[pointer])
             elif instruction == 'not': memory[pointer] = int(not memory[pointer])
+            elif instruction == 'rand':
+                try:
+                    memory[pointer] = random.randint(mem(program[i+1]), mem(program[i+2]))
+                except:
+                    try: error("Cannot convert %s to number"%program[i+1])
+                    except: error("Cannot convert %s to number"%program[i+2])
+                i += 2
             elif instruction == 'pi': memory[pointer] = math.pi
+            elif instruction == 'e': memory[pointer] = math.e
             # Comparison
             elif instruction == 'eq':
                 memory[pointer] = int(memory[pointer]==mem(program[i+1]))
@@ -111,7 +131,7 @@ if len(sys.argv) > 1:
                 except KeyError: error("Unknown marker %d"%mem(program[i+1]))
             elif instruction == 'qoto':
                 try: i = markers[mem(program[i+1])]-1 if not memory[pointer] == 0 else markers[mem(program[i+2])]-1
-                except KeyError: error("Unknown marker %d"%mem(program[i+1]))
+                except KeyError: error("Unknown marker %d"%(mem(program[i+1]) if not mem(program[i+1]) in markers else mem(program[i+2])))
             elif instruction == 'wait': input()
             # I/O
             elif instruction == 'input':
