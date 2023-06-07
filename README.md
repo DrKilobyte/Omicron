@@ -1,7 +1,5 @@
 # Omicron
-<i><q>Easy to learn and keeps you on your toes!</q></i>
-
-Omicron is an interpreted Turing-complete esoteric programming language written in Python.
+Omicron is an interpreted programming language written in Python.
 
 Omicron was compiled using pyinstaller for Python 3. A Python 2 version is possible in the future.
 
@@ -18,15 +16,19 @@ Pointer starts at 0. Negative addresses are valid!
 		<td>Set current memory cell</td>
 	</tr>
 	<tr>
+		<td>!f</td>
+		<td>Import program from file f and insert it into current program (pre-execution)
+	</tr>
+	<tr>
 		<td>:n</td>
 		<td>Mark position in program as n</td>
 	</tr>
 	<tr>
-		<th colspan="2">Pointer</th>
+		<td>@n</td>
+		<td>Get value at memory cell n (can be nested, e.g. @@@n)</td>
 	</tr>
 	<tr>
-		<td>@n</td>
-		<td>Get value at memory cell n (can be used to set memory cells and can be nested, e.g. @@@n)</td>
+		<th colspan="2">Pointer</th>
 	</tr>
 	<tr>
 		<td>&gt;</td>
@@ -120,6 +122,10 @@ Pointer starts at 0. Negative addresses are valid!
 		<td>Set current memory cell to its base-n logarithm</td>
 	</tr>
 	<tr>
+		<td>fact n</td>
+		<td>Set current memory cell to n factorial</td>
+	</tr>
+	<tr>
 		<td>abs</td>
 		<td>Set current memory cell to its absolute value</td>
 	</tr>
@@ -128,8 +134,16 @@ Pointer starts at 0. Negative addresses are valid!
 		<td>Negate current memory cell</td>
 	</tr>
 	<tr>
+		<td>rand n1 n2</td>
+		<td>Set current memory cell to random number between n1 and n2 (inclusive)</td>
+	</tr>
+	<tr>
 		<td>pi</td>
 		<td>Set current memory cell to pi</td>
+	</tr>
+	<tr>
+		<td>e</td>
+		<td>Set current memory cell to e</td>
 	</tr>
 	<tr>
 		<th colspan="2">Comparison</th>
