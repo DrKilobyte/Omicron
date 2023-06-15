@@ -1,7 +1,7 @@
 # Omicron
-Omicron is an interpreted programming language written in Python.
+Omicron is an imperative Turing-complete interpreted programming language written in Python.
 
-Omicron was compiled using pyinstaller for Python 3. A Python 2 version is possible in the future.
+Omicron was compiled using <del>pyinstaller</del> Nuitka.
 
 ## Instructions
 Pointer starts at 0. Negative addresses are valid!
