@@ -3,6 +3,9 @@ Omicron is an imperative Turing-complete interpreted programming language writte
 
 Omicron was compiled using <del>pyinstaller</del> Nuitka.
 
+## Use
+Download <code>omicron.exe</code>. To run a program, open a command line and navigate into the directory containing the interpreter, and run <code>omicron.exe &lt;file&gt;</code>, where <code>&lt;file&gt;</code> is path to your <code>.omi</code> program.
+
 ## Instructions
 Pointer starts at 0. Negative addresses are valid!
 
