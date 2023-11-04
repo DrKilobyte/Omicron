@@ -1,5 +1,5 @@
 # Omicron
-Omicron is an imperative Turing-complete interpreted programming language written in Python.<br>
+Omicron is a Turing-complete interpreted programming language written in Python.<br>
 Compiled to a standalone executable with Nuitka.
 
 <b>NOTICE</b><br>
@@ -9,7 +9,9 @@ May undergo a namechange sometime in the near-ish future.
 Download <code>omicron.exe</code>. To run a program, open a command line and navigate into the directory containing the interpreter, and run <code>omicron.exe &lt;file&gt;</code>, where <code>&lt;file&gt;</code> is path to your <code>.omi</code> program.
 
 ## Instructions
-Pointer starts at 0. Negative addresses are valid!
+Pointer starts at memory cell 0. Negative addresses are valid.<br>
+Memory cells store either a number (integer or floating point), or <code>nil</code>.<br>
+<code>nil</code> can be used in a program to test for an empty cell, erase a cell, etc.
 
 <table>
 	<tr>
@@ -180,8 +182,8 @@ Pointer starts at 0. Negative addresses are valid!
 		<td>Goto marker n</td>
 	</tr>
 	<tr>
-		<td>qoto n1 n2</td>
-		<td>Goto marker n1 if current memory cell is not zero, otherwise goto marker n2</td>
+		<td>qoto q n1 n2</td>
+		<td>Goto marker n1 if current memory cell is equal to q, otherwise goto marker n2</td>
 	</tr>
 	<tr>
 		<td>wait</td>
@@ -234,6 +236,10 @@ Pointer starts at 0. Negative addresses are valid!
 		<td>awriteb f</td>
 		<td>Append current memory cell to file f (binary)</td>
 	</tr>
+	<tr>
+		<td>mem</td>
+		<td>Prints the memory tape</td>
+	</tr>
 </table>
 
 ## Examples
@@ -258,7 +264,7 @@ inputc printc
 </pre>
 ### Truth machine
 <pre>
-input qoto 1 2 :1 print goto 1 :2
+input qoto 0 2 1 :1 print goto 1 :2
 </pre>
 ### Pythagorean theorem
 <pre>
@@ -266,9 +272,22 @@ input ^ 2 > input ^ 2 + @0 \ 2 print
 </pre>
 ### Fibonacci sequence (with user input)
 <pre>
-input - 2 > 1 print > 1 print > :1 @1 + @2 print << 2 @2 > @3 ~ 0 -- qoto 2 3 :2 ~ 3 goto 1 :3 wait
+input - 2 > 1 print > 1 print > :1 @1 + @2 print << 2 @2 > @3 ~ 0 -- qoto 0 3 2 :2 ~ 3 goto 1 :3 wait
 </pre>
 Alternative; only final output
 <pre>
-input - 2 > 1 > 1 > :1 @1 + @2 << 2 @2 > @3 ~ 0 -- qoto 2 3 :2 ~ 3 goto 1 :3 ~ 3 print wait
+input - 2 > 1 > 1 > :1 @1 + @2 << 2 @2 > @3 ~ 0 -- qoto 0 3 2 :2 ~ 3 goto 1 :3 ~ 3 print wait
+</pre>
+Binary counter; proof of Turing completeness (simulates a Turing machine; labels define machine states).
+<pre>
+:1 qoto nil 11 2
+:11 < goto 4
+:2 qoto 0 22 3
+:22 > goto 1
+:3 qoto 1 22 4
+:4 qoto nil 44 5
+:44 1 mem goto 1
+:5 qoto 0 55 6 
+:55 1 mem goto 1
+:6 0 < goto 4
 </pre>
