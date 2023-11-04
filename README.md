@@ -1,7 +1,9 @@
 # Omicron
-Omicron is an imperative Turing-complete interpreted programming language written in Python.
+Omicron is an imperative Turing-complete interpreted programming language written in Python.<br>
+Compiled to a standalone executable with Nuitka.
 
-Omicron was compiled using Nuitka.
+<b>NOTICE</b><br>
+May undergo a namechange sometime in the near-ish future.
 
 ## Use
 Download <code>omicron.exe</code>. To run a program, open a command line and navigate into the directory containing the interpreter, and run <code>omicron.exe &lt;file&gt;</code>, where <code>&lt;file&gt;</code> is path to your <code>.omi</code> program.
