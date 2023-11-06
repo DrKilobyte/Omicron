@@ -5,13 +5,13 @@ if len(sys.argv) > 1:
     except FileNotFoundError:
         print("File not found: %s"%sys.argv[1])
         sys.exit()
-    memory = {}
+    memory = {0:None}
     def error(m):
         global ok
         print("ERROR: instruction %d: %s"%(i,m))
         ok = 0
     def number(n):
-        return float(n) if ('.' in str(n)) else int(n)
+        return None if n == 'nil' else (float(n) if ('.' in str(n)) else int(n))
     def mem(instruction):
         while '@' in instruction:
             for cell in memory: instruction = instruction.replace("@"+str(cell), str(memory[cell]))
@@ -99,17 +99,17 @@ if len(sys.argv) > 1:
                 except: error("Cannot convert %s to number"%program[i+1])
                 i += 1
             elif instruction == 'abs': memory[pointer] = abs(memory[pointer])
-            elif instruction == 'not': memory[pointer] = int(not memory[pointer])
             elif instruction == 'rand':
-                try:
-                    memory[pointer] = random.randint(mem(program[i+1]), mem(program[i+2]))
+                try: memory[pointer] = random.randint(mem(program[i+1]), mem(program[i+2]))
                 except:
-                    try: error("Cannot convert %s to number"%program[i+1])
-                    except: error("Cannot convert %s to number"%program[i+2])
+                    try:
+                        mem(program[i+1])
+                        error("Cannot convert %s to number"%program[i+2])
+                    except: error("Cannot convert %s to number"%program[i+1])
                 i += 2
             elif instruction == 'pi': memory[pointer] = math.pi
             elif instruction == 'e': memory[pointer] = math.e
-            # Comparison
+            # Logic
             elif instruction == 'eq':
                 memory[pointer] = int(memory[pointer]==mem(program[i+1]))
                 i += 1
@@ -125,13 +125,23 @@ if len(sys.argv) > 1:
             elif instruction == 'lte':
                 memory[pointer] = int(memory[pointer]<=mem(program[i+1]))
                 i += 1
+            elif instruction == 'not': memory[pointer] = int(not memory[pointer])
+            elif instruction == 'and':
+                memory[pointer] = int(memory[pointer] and mem(program[i+1]))
+                i += 1
+            elif instruction == 'or':
+                memory[pointer] = int(memory[pointer] or mem(program[i+1]))
+                i += 1
+            elif instruction == 'xor':
+                memory[pointer] = int(bool(memory[pointer]) ^ bool(mem(program[i+1])))
+                i += 1
             # Flow
             elif instruction == 'goto':
                 try: i = markers[mem(program[i+1])]-1
                 except KeyError: error("Unknown marker %d"%mem(program[i+1]))
             elif instruction == 'qoto':
-                try: i = markers[mem(program[i+1])]-1 if not memory[pointer] == 0 else markers[mem(program[i+2])]-1
-                except KeyError: error("Unknown marker %d"%(mem(program[i+1]) if not mem(program[i+1]) in markers else mem(program[i+2])))
+                try: i = markers[mem(program[i+2])]-1 if memory[pointer] == mem(program[i+1]) else markers[mem(program[i+3])]-1
+                except KeyError: error("Unknown marker %d"%(mem(program[i+2]) if not mem(program[i+2]) in markers else mem(program[i+3])))
             elif instruction == 'wait': input()
             # I/O
             elif instruction == 'input':
@@ -144,16 +154,16 @@ if len(sys.argv) > 1:
             elif instruction == 'read':
                 try:
                     with open(program[i+1], 'rb') as f: memory[pointer] = f.read()[mem(program[i+2])]
-                except FileNotFoundError:
-                    error("File not found: %s"%program[i+1])
-                except IndexError:
-                    error("Specified byte is beyond the end of the file: %s"%mem(program[i+2]))
+                except FileNotFoundError: error("File not found: %s"%program[i+1])
+                except IndexError: error("Specified byte is beyond the end of the file: %s"%mem(program[i+2]))
                 i += 2
             elif instruction == 'size':
                 with open(program[i+1], 'rb') as f: memory[pointer] = len(f.read())
                 i += 1
-            elif instruction == 'print': print(memory[pointer])
-            elif instruction == 'printc': print(chr(memory[pointer]), end="", flush=True)
+            elif instruction == 'print': print('nil' if memory[pointer] == None else memory[pointer])
+            elif instruction == 'printc':
+                try: print(chr(memory[pointer]), end="", flush=True)
+                except TypeError: error("Cannot convert nil to character")
             elif instruction == 'write':
                 with open(program[i+1], 'w') as f: f.write(chr(memory[pointer]))
                 i += 1
@@ -166,14 +176,15 @@ if len(sys.argv) > 1:
             elif instruction == 'awriteb':
                 with open(program[i+1], 'ab') as f: f.write(bytearray([memory[pointer]]))
                 i += 1
+            elif instruction == 'mem':
+                print('|'+'|'.join([str(x[1]).replace('None',' ') for x in sorted(memory.items())])+'|')
 
             elif instruction == 'stop': break
             elif instruction.startswith(":"): pass
             else:
-                try:
-                    memory[pointer] = mem(instruction)
-                except:
-                    error("Unknown instruction %s"%instruction)
+                try: memory[pointer] = mem(instruction)
+                except: error("Unknown instruction %s"%instruction)
+            if not pointer in memory: memory[pointer] = None
             if not ok: break
             i += 1
         except KeyboardInterrupt:
