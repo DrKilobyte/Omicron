@@ -152,23 +152,23 @@ Memory cells store either a number (integer or floating point), or <code>nil</co
 		<th colspan="2">Comparison</th>
 	<tr>
 		<td>eq n</td>
-		<td>Sets current memory cell to 1 if it equals n, else 0
+		<td>Set current memory cell to 1 if it is equal to n, else 0
 	</tr>
 	<tr>
 		<td>gt n</td>
-		<td>Sets current memory cell to 1 if it is greater than n, else 0
+		<td>Set current memory cell to 1 if it is greater than n, else 0
 	</tr>
 	<tr>
 		<td>gte n</td>
-		<td>Sets current memory cell to 1 of it is greater then or equal to n, else 0
+		<td>Set current memory cell to 1 if it is greater then or equal to n, else 0
 	</tr>
 	<tr>
 		<td>lt n</td>
-		<td>Sets current memory cell to 1 if it is less than n, else 0
+		<td>Set current memory cell to 1 if it is less than n, else 0
 	</tr>
 	<tr>
 		<td>lte n</td>
-		<td>Sets current memory cell to 1 of it is lesser then or equal to n, else 0
+		<td>Set current memory cell to 1 if it is lesser then or equal to n, else 0
 	</tr>
 	<tr>
 		<td>not</td>
