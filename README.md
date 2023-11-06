@@ -175,6 +175,19 @@ Memory cells store either a number (integer or floating point), or <code>nil</co
 		<td>Set current memory cell to 1 if it is 0, else 0</td>
 	</tr>
 	<tr>
+		<td>and n</td>
+		<td>Set current memory cell to 1 if (current memory cell && n), else 0</td>
+	</tr>
+	<tr>
+		<td>or n</td>
+		<td>Set current memory cell to 1 if (current memory cell || n), else 0</td>
+  	</tr>
+	<tr>
+		<td>xor n</td>
+		<td>Set current memory cell to 1 if (current memory cell ^ n), else 0</td>
+  	</tr>
+	</td>
+	<tr>
 		<th colspan="2">Flow</th>
 	</tr>
 	<tr>
