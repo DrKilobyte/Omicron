@@ -15,6 +15,7 @@ if len(sys.argv) > 1:
     def mem(instruction):
         while '@' in instruction:
             for cell in memory: instruction = instruction.replace("@"+str(cell), str(memory[cell]))
+        instruction = instruction.replace('pi', str(math.pi)).replace('e', str(math.e))
         return number(instruction)
     ok = 1
     pointer = 0
@@ -107,8 +108,6 @@ if len(sys.argv) > 1:
                         error("Cannot convert %s to number"%program[i+2])
                     except: error("Cannot convert %s to number"%program[i+1])
                 i += 2
-            elif instruction == 'pi': memory[pointer] = math.pi
-            elif instruction == 'e': memory[pointer] = math.e
             # Logic
             elif instruction == 'eq':
                 memory[pointer] = int(memory[pointer]==mem(program[i+1]))
