@@ -1,5 +1,5 @@
 # Omicron
-Omicron is a Turing-complete interpreted programming language written in Python.<br>
+Omicron is an esoteric (Turing-complete?) interpreted programming language written in Python.<br>
 Compiled to a standalone executable with Nuitka.
 
 ## Use
@@ -288,7 +288,7 @@ Alternative; only final output
 <pre>
 input - 2 > 1 > 1 > :1 @1 + @2 << 2 @2 > @3 ~ 0 -- qoto 0 3 2 :2 ~ 3 goto 1 :3 ~ 3 print wait
 </pre>
-Binary counter; proof of Turing completeness (simulates a Turing machine; labels define machine states).
+### Binary counter ###
 <pre>
 :1 qoto nil 11 2
 :11 < goto 4
